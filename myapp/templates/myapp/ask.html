@@ -1,0 +1,47 @@
+{% extends "myapp/layout.html" %}
+
+{% block title %} สอบถามข้อมูล | WittyShop {% endblock %}
+
+{% block content %}
+
+{% comment %} ชื่อผู้ติดต่อ (text){% endcomment %}
+{% comment %} Email (text){% endcomment %}
+{% comment %} หัวข้อ (text){% endcomment %}
+{% comment %} รายละเอียด (textarea){% endcomment %}
+
+<h1>สอบถามข้อมูลเพื่มเติม</h1>
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">ชื่อผู้ติดต่อ</label>
+            <input type="text" class="form-control" placeholder="ชื่อ นามสกุล" id="name" name="name">
+        </div><br>
+        <div class="form-group" class="background-color-red" >
+            <label for="email">Email</label>
+            <input type="text" class="form-control" placeholder="อีเมล" id="email" name="email">
+        </div><br>
+        {% comment %}
+        <div class="form-group">
+            <label for="title">หัวข้อ</label>
+            <input class="background-color-red" type="text" id="title" name="title">
+        </div><br>
+        {% endcomment %}
+        <div class="form-group">
+            <label for="title">หัวข้อ</label>
+            <select class="form-select" type="text" id="title" name="title">
+                <option>ข้อมูลเกี่ยวกับสินค้า</option>
+                <option>แจ้งเคลมสินค้า</option>
+                <option>ปัญหาการใช้งานสินค้า</option>
+                <option>ข้อมูลทั่วไป</option>
+              </select>
+        </div><br>
+        <div class="form-group">
+            <label for="detail">รายละเอียด</label>
+            <textarea class="form-control" name="detail" placeholder="โปรดระบุรายละเอียด" id="detail" rows="5"></textarea>
+        </div><br>
+        <button type="submit" class="btn btn-primary" class="mb-auto">Submit</button>
+    </form>
+</div>
+
+{% endblock %}

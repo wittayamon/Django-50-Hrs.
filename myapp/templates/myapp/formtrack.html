@@ -1,0 +1,37 @@
+{% extends "myapp/layout.html" %}
+
+{% block title %} Add Tracking | WittyShop {% endblock %}
+
+{% block content %}
+
+{% comment %} ชื่อ (text){% endcomment %}
+{% comment %} เบอร์โทร (text){% endcomment %}
+{% comment %} เลขพัสดุ (text){% endcomment %}
+{% comment %} รายละเอียด (text){% endcomment %}
+
+<h1>ฟอร์มเพิ่ม Tracking</h1>
+<div class="container">
+    <form method="POST" action="addtrack">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">ชื่อลูกค้า</label>
+            <input type="text" class="form-control" placeholder="ชื่อ นามสกุล" id="name" name="name">
+        </div><br>
+        <div class="form-group">
+            <label class="required" for="tel">เบอร์โทร</label>
+            <input type="text" class="form-control" placeholder="เบอร์โทรลูกค้า" id="tel" required id="tel" name="tel">
+        </div><br>
+        
+        <div class="form-group">
+            <label for="newtrack">เลขพัสดุ</label>
+            <input type="text" class="form-control" placeholder="กรอกเลขพัสดุ" id="newtrack" name="newtrack">
+        </div><br>        
+        <div class="form-group">
+            <label for="detail_track">รายละเอียดเพิ่มเติม</label>
+            <input type="text" class="form-control" placeholder="ใส่รายละเอียด เช่น รอส่ง" id="detail_track" name="detail_track">
+        </div><br>
+        <button type="submit" class="btn btn-primary" class="mb-auto">บันทึก</button>
+    </form>
+</div>
+
+{% endblock %}
