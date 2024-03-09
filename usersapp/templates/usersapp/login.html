@@ -7,6 +7,13 @@
 <div>
   <form method="POST">
     {% csrf_token %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{message.tags}}" role="alert">
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
     <!-- <img class="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
     <h1 class="h3 mb-3 fw-normal">ลงชื่อเข้าใช้</h1>
   
