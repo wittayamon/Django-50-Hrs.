@@ -9,6 +9,7 @@ def Home(request):
     return render(request,'myapp/home.html',context)
 def Products(request):
     return render(request,'myapp/product.html')
+@login_required(login_url="login")
 def TrackingPage(request):
     tracks = Tracking.objects.all()
     context = {'tracks':tracks}
@@ -32,7 +33,7 @@ def Ask(request):
         new_ask.detail = detail
         new_ask.save()
     return render(request,'myapp/ask.html')
-
+@login_required(login_url="/login")
 def addTracks(request):
     if request.method == 'POST':
         data = request.POST.copy()
@@ -48,7 +49,7 @@ def addTracks(request):
         new_track.other = detail_track
         new_track.save()
     return render(request,'myapp/formtrack.html')
-@login_required(login_url="/tracking")
+@login_required(login_url="/login")
 def edit(request,tracks_id):
     # เช็คว่าส่ง method post มาหรือเปล่า
     if request.method == 'POST':
@@ -64,7 +65,7 @@ def edit(request,tracks_id):
         tracks = Tracking.objects.get(id=tracks_id)
         context = {'tracks':tracks}
         return render(request, 'myapp/editformtrack.html',context)
-@login_required(login_url="/tracking")
+@login_required(login_url="/login")
 def delete(request,tracks_id):
     tracking = Tracking.objects.get(id=tracks_id)
     tracking.delete()
