@@ -5,7 +5,7 @@
 {% block content %}
 <main class="container-fluid" style="margin-top: 0;">
   <div>
-    {% if request.user.is_authenticated %}
+    {% if request.user.is_superuser %}
     <a href="{% url 'addtrack' %}" type="button" class="btn btn-info btn-lg">เพิ่มข้อมูล Tracking</a>
     {% else %}
     <a role="button" class="btn btn-info btn-lg disabled" aria-disabled="true">เพิ่มข้อมูล Tracking</a>
@@ -35,7 +35,7 @@
                   <td>{{t.name}}</td>
                   <td>ยังไม่จัดส่งสินค้า</td>
                   {% endif %}
-                  {% if request.user.is_authenticated %}
+                  {% if request.user.is_superuser %}
                   <td><a href="delete/{{t.id}}"
                     class="btn btn-danger"
                     onclick="return confirm('ยีนยันการลบ {{t.name}} หรือไม่ ?')">ลบ</a>

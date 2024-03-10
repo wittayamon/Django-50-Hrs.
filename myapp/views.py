@@ -9,7 +9,7 @@ def Home(request):
     return render(request,'myapp/home.html',context)
 def Products(request):
     return render(request,'myapp/product.html')
-@login_required(login_url="login")
+@login_required(login_url="/login")
 def TrackingPage(request):
     tracks = Tracking.objects.all()
     context = {'tracks':tracks}
