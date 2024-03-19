@@ -11,4 +11,6 @@ urlpatterns = [
     path('addtrack',addTracks, name='addtrack'),
     path('edit/<tracks_id>',edit, name='edit'),
     path('delete/<tracks_id>',delete,name='delete'),
+    path('questions',Questions, name='questions'),
+    path('asnwer/<int:askid>',Asnwer, name='asnwer'),
 ]

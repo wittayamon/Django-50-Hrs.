@@ -1,0 +1,35 @@
+{% extends "myapp/layout.html" %}
+
+{% block title %} หน้าตอบคำถามลูกค้า {% endblock %}
+
+{% block content %}
+<br>
+<h2>หน้าตอบคำถามลูกค้า</h2>
+<br><br>
+<div>
+    <h3>ชื่อผู้ติดต่อ : {{record.name}}</h3>
+    <h3>Email : {{record.email}}</h3>
+    <h3>หัวข้อ : {{record.title}}</h3>
+    <hr>
+    <h3>รายละเอียด</h3>
+    <p>{{record.detail}}</p><br>
+    <hr>
+    {% if record.detail_asnwer %}
+        <h3>(ตอบแล้ว)</h3>
+        <p>{{record.detail_asnwer}}</p><br>
+    {% endif %}
+</div>
+
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+        <input type="hidden" id="askid" name="askid" value="{{record.id}}">
+        <div class="form-group">
+            <label for="detail">รายละเอียดคำตอบ</label>
+            <textarea class="form-control" name="detail_asnwer" placeholder="ตอบคำถามลูกค้า" id="detail_asnwer" rows="5"></textarea>
+        </div><br>
+        <button type="submit" class="btn btn-primary" class="mb-auto">Submit</button>
+    </form>
+</div>
+
+{% endblock %}

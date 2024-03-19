@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<div>
+<div class="container">
   <form method="POST">
     {% csrf_token %}
     {% if messages %}
@@ -18,7 +18,7 @@
     <h1 class="h3 mb-3 fw-normal">ลงชื่อเข้าใช้</h1>
   
     <div class="form-floating">
-      <input type="username" name="username" class="form-control" id="floatingInput" placeholder="user name">
+      <input type="text" name="username" class="form-control" id="floatingInput" placeholder="user name">
       <label for="floatingInput">User name</label>
     </div>
     <div class="form-floating">

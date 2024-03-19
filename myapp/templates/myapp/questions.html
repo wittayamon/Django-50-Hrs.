@@ -1,0 +1,44 @@
+{% extends "myapp/layout.html" %}
+
+{% block title %} คำถาม | Witty Shop {% endblock %}
+
+{% block content %}
+<main class="container-fluid" style="margin-top: 0;">
+  <!-- <div>
+    {% if request.user.is_superuser %}
+    <a href="{% url 'addtrack' %}" type="button" class="btn btn-info btn-lg">เพิ่มข้อมูล Tracking</a>
+    {% else %}
+    <a role="button" class="btn btn-info btn-lg disabled" aria-disabled="true">เพิ่มข้อมูล Tracking</a>
+    {% endif %}
+  </div> -->
+    <div class="d-flex justify-content-center">
+        <table class="table table-dark table-striped table-hover">
+            <thead>
+              <tr>
+                <th scope="col">ชื่อ</th>
+                <th scope="col">Email</th>
+                <th scope="col">หัวข้อ</th>
+                <th scope="col">รายละเอียด</th>
+                <th scope="col">ตอบคำถาม</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for q in questions %}
+                <tr>
+                  <td>{{q.name}}</td>
+                  <td>{{q.email}}</td>
+                  <td>{{q.title}}</td>
+                  <td>{{q.detail}}</td>
+                  {% if q.detail_asnwer %}
+                  <td><a href="{% url 'asnwer' q.id %}" class="btn btn-success">ตอบแล้ว</a></td>
+                  {% else %}
+                  <td><a href="{% url 'asnwer' q.id %}" class="btn btn-warning">ตอบ</a></td>
+                  {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    
+    </div>
+</main>
+{% endblock %}

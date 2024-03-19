@@ -19,9 +19,10 @@ class Product(models.Model):
     image=models.ImageField(upload_to="products",blank=True)
 
 class askQA(models.Model):
-    name=models.CharField(max_length=100,null=True,blank=True,verbose_name='ชื่อผู้ติดต่อ')
+    name=models.CharField(max_length=100,verbose_name='ชื่อผู้ติดต่อ')
     email=models.CharField(max_length=100,null=True,blank=True,verbose_name='อีเมล')
     title=models.CharField(max_length=100,null=True,blank=True,verbose_name='หัวห้อ')
     detail=models.TextField(max_length=100,null=True,blank=True,verbose_name='รายละเอียด')
+    detail_asnwer=models.TextField(null=True,blank=True,verbose_name='คำตอบ')
     def __str__(self):
         return '{} : ({})'.format(self.name, self.title)

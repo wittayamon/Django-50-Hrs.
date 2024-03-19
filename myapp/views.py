@@ -70,3 +70,19 @@ def delete(request,tracks_id):
     tracking = Tracking.objects.get(id=tracks_id)
     tracking.delete()
     return redirect("/tracking")
+@login_required(login_url="/login")
+def Questions(request):
+    questions = askQA.objects.all()
+    context = {'questions':questions}
+    return render(request,'myapp/questions.html',context)
+@login_required(login_url="/login")
+def Asnwer(request,askid):
+    record = askQA.objects.get(id=askid)
+    if request.method == 'POST':
+        data = request.POST.copy()
+        # askid = data.get('askid')
+        detail_asnwer = data.get('detail_asnwer')
+        record.detail_asnwer = detail_asnwer
+        record.save()
+    context = {'record':record}
+    return render(request,'myapp/asnwer.html',context)

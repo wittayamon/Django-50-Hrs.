@@ -50,3 +50,6 @@ body {
   border-bottom-color: #fff;
   font-weight: 25px;
 }
+.login-container {
+  max-width: 640px;
+}
